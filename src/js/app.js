@@ -29,10 +29,22 @@ const orbit = new OrbitControls(camera, renderer.domElement);
 camera.position.set(0, 0, 6);
 orbit.autoRotate = true;
 
+//load manager
+
+const loadManager = new THREE.LoadingManager();
+const loaderDiv = document.querySelector('.loader')
+
+loadManager.onLoad = () =>{
+  setTimeout(() => {
+    
+    loaderDiv.classList.remove('loading');
+  }, 3000);
+}
+
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 0.9;
-const loader = new RGBELoader();
+const loader = new RGBELoader(loadManager);
 
 loader.load(hdrTextureUrl, function (texture) {
   texture.mapping = EquirectangularRefractionMapping;
