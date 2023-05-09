@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
 import { DoubleSide, EquirectangularRefractionMapping } from 'three';
 import { AnimationUtils } from 'three';
 
-const hdrTextureUrl = new URL('../../public/assets/hdr.hdr', import.meta.url);
+const hdrTextureUrl = new URL('../../public/assets/bg.hdr', import.meta.url);
 const canvas = document.querySelector('.canvas');
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: canvas });
@@ -26,7 +26,7 @@ const camera = new THREE.PerspectiveCamera(
 const orbit = new OrbitControls(camera, renderer.domElement);
 
 // Camera positioning
-camera.position.set(0, 0, 12);
+camera.position.set(0, 0, 6);
 orbit.autoRotate = true;
 
 renderer.outputEncoding = THREE.sRGBEncoding;
